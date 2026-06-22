@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finanzkompass | Ben Wilke – Finanzberatung für Ärzte & Mediziner</title>
+<meta name="description" content="Finanzberatung speziell für Ärzte und Mediziner in Hannover. Versorgungswerk, BU, Praxisfinanzierung und Vermögensaufbau – klar erklärt. Alle Gespräche kostenfrei.">
+<style>
+  :root{
+    --green-deep:#1E3A2C;
+    --green-deeper:#142B20;
+    --green:#3C6B4A;
+    --green-light:#7FA77E;
+    --gold:#A9893F;
+    --gold-light:#C7A964;
+    --paper:#F4EFE3;
+    --paper-card:#FFFFFF;
+    --line:#DED4BB;
+    --ink:#22281F;
+    --font-display:'Source Serif 4', Georgia, 'Times New Roman', serif;
+    --font-body: 'Inter', -apple-system, Segoe UI, sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0; background:var(--paper); color:var(--ink); font-family:var(--font-body); line-height:1.6;}
+  h1,h2,h3{font-family:var(--font-display); font-weight:600; margin:0;}
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 24px;}
+  .eyebrow{font-family:var(--font-body); text-transform:uppercase; letter-spacing:.14em; font-size:.72rem; color:var(--gold); font-weight:700; margin-bottom:10px; display:block;}
+
+  header{background:var(--green-deep); color:#F1EBDA; position:sticky; top:0; z-index:50; border-bottom:1px solid rgba(199,169,100,.25);}
+  .nav{display:flex; align-items:center; justify-content:space-between; padding:14px 0;}
+  .brand{display:flex; align-items:center; gap:10px; font-family:var(--font-display); font-size:1.15rem;}
+  .brand .mark{width:26px; height:26px; flex:none;}
+  .nav .stars{font-size:.8rem; color:var(--gold-light); margin-right:auto; margin-left:20px;}
+  .nav .call{border:1px solid var(--gold-light); color:var(--gold-light); padding:8px 16px; border-radius:2px; font-size:.85rem; font-weight:600; white-space:nowrap;}
+  @media(max-width:640px){ .nav .stars{display:none;} }
+
+  .hero{background: radial-gradient(circle at 80% -10%, #28503A 0%, var(--green-deep) 45%, var(--green-deeper) 100%); color:#F4EFE3; padding:64px 0 90px; position:relative; overflow:hidden;}
+  .hero::after{content:""; position:absolute; right:-120px; top:-80px; width:480px; height:480px; border-radius:50%; border:1px solid rgba(199,169,100,.16);}
+  .hero::before{content:""; position:absolute; right:-40px; top:20px; width:340px; height:340px; border-radius:50%; border:1px solid rgba(199,169,100,.12);}
+  .hero-grid{display:grid; grid-template-columns:1.15fr .85fr; gap:48px; align-items:start; position:relative;}
+  @media(max-width:880px){ .hero-grid{grid-template-columns:1fr;} }
+  .hero h1{font-size:2.4rem; line-height:1.18; max-width:560px;}
+  .hero h1 em{font-style:normal; color:var(--gold-light);}
+  .hero p.lead{font-size:1.06rem; max-width:520px; margin:20px 0 26px; color:#DCD5C2;}
+  .checklist{list-style:none; padding:0; margin:0 0 30px; display:flex; flex-direction:column; gap:9px;}
+  .checklist li{display:flex; gap:10px; font-size:.95rem; color:#E9E3D1;}
+  .checklist li::before{content:"✓"; color:var(--gold-light); font-weight:700;}
+
+  .card{background:var(--paper-card); color:var(--ink); border-radius:4px; padding:30px; box-shadow:0 24px 50px rgba(0,0,0,.32); border-top:3px solid var(--gold);}
+  .card h3{font-size:1.25rem; margin-bottom:4px;}
+  .card .sub{font-size:.85rem; color:#5b5743; margin-bottom:18px;}
+  .card label{display:block; font-size:.78rem; font-weight:600; margin:14px 0 5px; color:var(--green-deep);}
+  .card input{width:100%; padding:11px 12px; border:1px solid #D2C8A9; border-radius:3px; font-family:var(--font-body); font-size:.95rem; background:#fff;}
+  .card input:focus{outline:2px solid var(--gold); outline-offset:1px;}
+  .btn{margin-top:18px; width:100%; background:var(--green-deep); color:#F4EFE3; border:none; padding:14px; font-size:.95rem; font-weight:700; border-radius:3px; cursor:pointer;}
+  .btn:hover{background:#27492F;}
+  .card .fine{font-size:.74rem; color:#807a63; margin-top:12px; text-align:center;}
+  .alt-cta{text-align:center; margin-top:14px; font-size:.85rem;}
+  .alt-cta a{color:var(--green-deep); font-weight:700; border-bottom:1px solid var(--gold);}
+  .booking-btn{display:block; text-align:center; margin-top:10px; background:#fff; border:1.5px solid var(--green); color:var(--green-deep); padding:12px; border-radius:3px; font-weight:700; font-size:.9rem;}
+  .booking-btn:hover{background:#F0F5EE;}
+
+  .trustbar{display:flex; flex-wrap:wrap; gap:26px; margin-top:38px; padding-top:28px; border-top:1px solid rgba(199,169,100,.25); font-size:.85rem; color:#D2CAB2;}
+  .trustbar span{display:flex; align-items:center; gap:7px;}
+
+  section{padding:68px 0;}
+  .section-head{max-width:640px; margin-bottom:42px;}
+  .section-head h2{font-size:1.85rem; line-height:1.22;}
+  .section-head p{color:#5b5743; margin-top:10px; font-size:1.02rem;}
+
+  .pain-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:20px;}
+  @media(max-width:880px){ .pain-grid{grid-template-columns:repeat(2,1fr);} }
+  @media(max-width:520px){ .pain-grid{grid-template-columns:1fr;} }
+  .pain-card{background:#fff; border:1px solid var(--line); padding:24px 20px; border-radius:3px;}
+  .pain-card .icon{font-size:1.4rem; margin-bottom:10px;}
+  .pain-card h3{font-size:1rem; margin-bottom:6px; font-family:var(--font-body); font-weight:700; color:var(--green-deep);}
+  .pain-card p{font-size:.88rem; color:#5b5743; margin:0;}
+
+  .band-dark{background:var(--green-deep); color:#F1EBDA;}
+  .band-dark .section-head p{color:#D2CAB2;}
+  .stat-row{display:flex; gap:50px; margin:36px 0 44px; flex-wrap:wrap;}
+  .stat-row div{min-width:110px;}
+  .stat-row .num{font-family:var(--font-display); font-size:2.1rem; color:var(--gold-light);}
+  .stat-row .label{font-size:.8rem; color:#BDB59C; margin-top:2px;}
+  .profile-grid{display:grid; grid-template-columns:1fr 1fr; gap:24px;}
+  @media(max-width:760px){ .profile-grid{grid-template-columns:1fr;} }
+  .profile{background:rgba(255,255,255,.04); border:1px solid rgba(199,169,100,.22); padding:26px; border-radius:3px;}
+  .profile .avatar{width:48px; height:48px; border-radius:50%; background:var(--gold); color:var(--green-deeper); display:flex; align-items:center; justify-content:center; font-weight:700; font-family:var(--font-display); margin-bottom:14px;}
+  .profile h3{font-size:1.1rem;}
+  .profile .role{color:var(--gold-light); font-size:.82rem; margin:2px 0 10px;}
+  .profile p{font-size:.9rem; color:#DCD5C2; margin:0 0 12px;}
+  .tags{display:flex; gap:8px; flex-wrap:wrap;}
+  .tags span{font-size:.72rem; border:1px solid rgba(199,169,100,.4); padding:4px 9px; border-radius:20px; color:#F1EBDA;}
+
+  .steps{display:grid; grid-template-columns:repeat(3,1fr); gap:30px;}
+  @media(max-width:780px){ .steps{grid-template-columns:1fr;} }
+  .step .n{font-family:var(--font-display); font-size:2.4rem; color:var(--gold); line-height:1; margin-bottom:10px; display:block;}
+  .step h3{font-size:1.05rem; margin-bottom:8px; color:var(--green-deep);}
+  .step p{font-size:.9rem; color:#5b5743; margin:0;}
+
+  .topic-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
+  @media(max-width:880px){ .topic-grid{grid-template-columns:repeat(2,1fr);} }
+  @media(max-width:560px){ .topic-grid{grid-template-columns:1fr;} }
+  .topic{background:#fff; border:1px solid var(--line); padding:26px; border-radius:3px; transition:border-color .2s;}
+  .topic:hover{border-color:var(--gold);}
+  .topic .icon{font-size:1.5rem;}
+  .topic h3{font-size:1.05rem; margin:10px 0 6px; color:var(--green-deep);}
+  .topic p{font-size:.88rem; color:#5b5743; margin:0;}
+  .topic.small{background:#F0F5EE; border-style:dashed;}
+  .topic .badge{display:inline-block; font-size:.66rem; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--green); background:#E3EEE0; padding:3px 8px; border-radius:20px; margin-bottom:8px;}
+
+  /* REVIEWS */
+  .review-summary{display:flex; align-items:center; gap:24px; margin-bottom:34px; flex-wrap:wrap;}
+  .review-avg{font-family:var(--font-display); font-size:3rem; color:var(--green-deep); line-height:1;}
+  .review-meta{font-size:.88rem; color:#5b5743;}
+  .review-stars{color:var(--gold); font-size:1.1rem; letter-spacing:1px;}
+  .review-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:20px;}
+  @media(max-width:760px){ .review-grid{grid-template-columns:1fr;} }
+  .review-card{background:#fff; border:1px solid var(--line); padding:22px; border-radius:3px;}
+  .review-card .stars{color:var(--gold); font-size:.95rem; margin-bottom:8px;}
+  .review-card p{font-size:.9rem; color:#3c4536; margin:0 0 12px;}
+  .review-card .who{font-size:.8rem; color:#7c7560; font-weight:600;}
+  .review-more{text-align:center; margin-top:24px; font-size:.88rem;}
+  .review-more a{color:var(--green-deep); font-weight:700; border-bottom:1px solid var(--gold);}
+
+  .faq-item{border-bottom:1px solid var(--line); padding:18px 0;}
+  .faq-item summary{cursor:pointer; font-weight:700; color:var(--green-deep); font-size:1rem; list-style:none; display:flex; justify-content:space-between; gap:14px;}
+  .faq-item summary::after{content:"+"; color:var(--gold); font-size:1.3rem; font-weight:400;}
+  .faq-item[open] summary::after{content:"–";}
+  .faq-item p{margin:12px 0 0; color:#5b5743; font-size:.93rem;}
+
+  .final{background:var(--green-deeper); color:#F4EFE3; text-align:center; padding:80px 0;}
+  .final h2{font-size:2rem; max-width:600px; margin:0 auto 14px;}
+  .final p{color:#D2CAB2; max-width:480px; margin:0 auto 28px;}
+  .final .btn{max-width:320px; margin:0 auto;}
+  .final .booking-btn{max-width:320px; margin:12px auto 0; background:transparent; color:var(--gold-light); border-color:var(--gold-light);}
+
+  footer{background:var(--green-deeper); color:#A29C85; padding:26px 0; font-size:.8rem;}
+  .foot-row{display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;}
+  .foot-row a{color:#CBC2A4;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="brand">
+      <svg class="mark" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="#C7A964" stroke-width="1.5"/><path d="M24 8 L29 24 L24 40 L19 24 Z" fill="#C7A964"/></svg>
+      Finanzkompass · Ben Wilke
+    </div>
+    <span class="stars">★★★★★ 4,7 · Alle Gespräche kostenfrei</span>
+    <a class="call" href="tel:+4901551001102">📞 0155 10011026</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow" style="color:var(--gold-light)">Finanzberatung für Ärzte & Mediziner</span>
+      <h1>Klarheit für deine <em>finanzielle Zukunft</em> – neben dem Klinikalltag.</h1>
+      <p class="lead">Versorgungswerk statt gesetzlicher Rente, Berufsunfähigkeit, Praxisfinanzierung und Vermögensaufbau – verständlich erklärt, in 45–60 Minuten. Alle Gespräche sind kostenfrei, nicht nur das erste.</p>
+      <ul class="checklist">
+        <li>Jedes Gespräch kostenfrei – auch Folgegespräche</li>
+        <li>Spezialisiert auf Ärzte, Assistenz- & Fachärzte, Praxisinhaber</li>
+        <li>Versorgungswerk-Logik statt Standard-Vorsorgeberatung</li>
+        <li>Per Telefon oder Video – passend zum Dienstplan</li>
+      </ul>
+      <div class="trustbar">
+        <span>✅ Alle Gespräche kostenfrei</span>
+        <span>🔒 DSGVO-konform</span>
+        <span>🩺 Fokus: Mediziner</span>
+        <span>🤝 Kein Verkaufsdruck</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Erstgespräch (45–60 Min.)</h3>
+      <div class="sub">Wir melden uns innerhalb von 24 h – oder du buchst dir direkt einen Termin.</div>
+      <form id="rueckrufForm" action="https://formspree.io/f/xkolngyo" method="POST">
+        <label for="vorname">Vorname</label>
+        <input id="vorname" name="Vorname" type="text" placeholder="Dein Vorname" required>
+        <label for="tel">Handynummer</label>
+        <input id="tel" name="Handynummer" type="tel" placeholder="z. B. 0151 23456789" required>
+        <label for="thema">Thema (optional)</label>
+        <input id="thema" name="Thema" type="text" placeholder="z. B. Versorgungswerk, BU, ETF">
+        <input type="hidden" name="_subject" value="Neue Anfrage über Finanzkompass">
+        <button class="btn" type="submit">Rückruf anfordern →</button>
+      </form>
+      <script>
+        document.getElementById('rueckrufForm').addEventListener('submit', function(e){
+          e.preventDefault();
+          const form = e.target;
+          const data = new FormData(form);
+          fetch(form.action, {
+            method: 'POST',
+            body: data,
+            headers: { 'Accept': 'application/json' }
+          }).then(response => {
+            if (response.ok) {
+              document.getElementById('formSuccess').style.display = 'block';
+              form.style.display = 'none';
+            } else {
+              alert('Da ist leider etwas schiefgelaufen. Bitte versuch es erneut oder ruf direkt an: 0155 10011026');
+            }
+          }).catch(() => {
+            alert('Da ist leider etwas schiefgelaufen. Bitte versuch es erneut oder ruf direkt an: 0155 10011026');
+          });
+        });
+      </script>
+      <div id="formSuccess" style="display:none">
+        <div style="font-size:1.4rem; margin-bottom:6px;">✅</div>
+        <strong>Anfrage erhalten!</strong>
+        <p style="font-size:.9rem; color:#5b5743; margin-top:6px;">Ich melde mich innerhalb von 24 h bei dir.</p>
+      </div>
+      <a class="booking-btn" href="https://outlook.office.com/book/Buchungsseite-KlarheitfrdeinefinanzielleZukunft@horbach.de/?ismsaljsauthenabled" target="_blank" rel="noopener">📅 Termin direkt buchen</a>
+      <div class="alt-cta">oder <a href="mailto:ben.wilke@horbach.de">📧 ben.wilke@horbach.de</a></div>
+      <div class="fine">🔒 DSGVO-konform. Keine Weitergabe an Dritte.</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Das kennst du aus dem Klinikalltag</span>
+      <h2>Zwischen Dienstplan und Weiterbildung bleibt das Thema Finanzen liegen.</h2>
+    </div>
+    <div class="pain-grid">
+      <div class="pain-card"><div class="icon">🏛️</div><h3>Versorgungswerk ≠ Rente</h3><p>Die Logik der ärztlichen Versorgungswerke unterscheidet sich grundlegend von der gesetzlichen Rente – das wird selten erklärt.</p></div>
+      <div class="pain-card"><div class="icon">😴</div><h3>Keine Zeit zwischen Schichten</h3><p>Dienste, Nachtschichten, Fortbildungen – für stundenlange Finanzrecherche bleibt schlicht keine Energie.</p></div>
+      <div class="pain-card"><div class="icon">⚠️</div><h3>Arbeitskraft ungesichert</h3><p>Als Arzt ist deine Arbeitskraft dein wertvollstes Kapital – und oft das am schlechtesten abgesicherte.</p></div>
+      <div class="pain-card"><div class="icon">📑</div><h3>Standardberatung passt nicht</h3><p>Viele Berater kennen Approbation, Weiterbildungsstufen oder Praxisfinanzierung nicht im Detail.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band-dark">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Wer berät dich</span>
+      <h2>Finanzberatung, die die Welt der Medizin versteht.</h2>
+      <p>Spezialisiert auf Ärzte und medizinisches Fachpersonal – von der Assistenzarztzeit bis zur eigenen Praxis.</p>
+    </div>
+    <div class="stat-row">
+      <div><div class="num">§34d</div><div class="label">Zugelassener Versicherungsmakler</div></div>
+      <div><div class="num">100%</div><div class="label">Alle Gespräche kostenfrei</div></div>
+      <div><div class="num">4,7★</div><div class="label">Ø Bewertung (40 Klienten)</div></div>
+    </div>
+    <div class="profile-grid">
+      <div class="profile">
+        <div class="avatar">BW</div>
+        <h3>Ben Wilke</h3>
+        <div class="role">Finanzberater · Finanzkompass</div>
+        <p>Begleitet Ärzte und Mediziner bei Versorgungswerk, Berufsunfähigkeit und Vermögensaufbau – verständlich erklärt, ohne Verkaufsfloskeln.</p>
+        <div class="tags"><span>Versorgungswerk</span><span>BU für Mediziner</span><span>ETF & Vermögensaufbau</span></div>
+      </div>
+      <div class="profile">
+        <div class="avatar">EN</div>
+        <h3>Experten-Netzwerk</h3>
+        <div class="role">Für Immobilien, Finanzierung & Investment</div>
+        <p>Bei Bedarf hole ich erfahrene Partner aus meinem Netzwerk hinzu – etwa für Immobilienkauf, Baufinanzierung oder Investmentstrategien jenseits des Kerngeschäfts.</p>
+        <div class="tags"><span>Immobilien</span><span>Finanzierung</span><span>Investment</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">So funktioniert's</span>
+      <h2>In drei Schritten zur Finanzklarheit</h2>
+      <p>Kein Papierkram vorab, kein Verkaufsdruck – nur ein ehrliches Gespräch auf Augenhöhe. Und das gilt für jedes Gespräch, nicht nur das erste.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><span class="n">01</span><h3>Nummer hinterlassen oder Termin buchen</h3><p>Vorname und Handynummer eintragen oder direkt online einen Termin wählen – wir melden uns innerhalb von 24 h.</p></div>
+      <div class="step"><span class="n">02</span><h3>Gespräch (45–60 Min.)</h3><p>Wir sprechen über deine Situation als Mediziner: Versorgungswerk, Absicherung, Ziele. Kostenfrei und unverbindlich – wie jedes weitere Gespräch auch.</p></div>
+      <div class="step"><span class="n">03</span><h3>Dein persönlicher Finanzplan</h3><p>Konkrete Empfehlungen – was du brauchst, in welcher Reihenfolge, mit welchem Budget.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Themen</span>
+      <h2>Womit ich dir als Arzt helfen kann</h2>
+      <p>Egal ob Assistenzarztzeit, Facharzt oder eigene Praxis.</p>
+    </div>
+    <div class="topic-grid">
+      <div class="topic"><div class="icon">🏛️</div><h3>Versorgungswerk</h3><p>Was deckt dein Versorgungswerk wirklich ab – und wo entstehen Lücken?</p></div>
+      <div class="topic"><div class="icon">🛡️</div><h3>Berufsunfähigkeit</h3><p>Deine Arbeitskraft als Mediziner richtig absichern – inkl. Klauseln, die für Heilberufe wichtig sind.</p></div>
+      <div class="topic"><div class="icon">📈</div><h3>Vermögensaufbau & ETF</h3><p>Strukturiert investieren, auch neben Klinikalltag und unregelmäßigem Einkommen.</p></div>
+      <div class="topic"><div class="icon">🏥</div><h3>Praxisfinanzierung</h3><p>Von der Niederlassung bis zur Praxisübernahme – die finanzielle Seite klar durchdacht, mit Unterstützung aus dem Experten-Netzwerk.</p></div>
+      <div class="topic"><div class="icon">❤️</div><h3>Krankenversicherung</h3><p>GKV oder PKV als Arzt – was sich über die Laufbahn wirklich rechnet.</p></div>
+      <div class="topic"><div class="icon">🧓</div><h3>Altersvorsorge</h3><p>Versorgungswerk plus private Vorsorge sinnvoll kombinieren.</p></div>
+      <div class="topic small"><div class="badge">Zusatzangebot</div><div class="icon">🩺</div><h3>Jobsuche als Assistenzarzt</h3><p>In ausgewählten Fällen unterstütze ich auch bei der Stellensuche als Assistenzarzt – im kleinen Rahmen, über mein Netzwerk in Kliniken und Praxen.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Erfahrungen</span>
+      <h2>Was Klientinnen und Klienten berichten</h2>
+      <p>Bewertungen aus abgeschlossenen Beratungsprozessen mit Ärztinnen und Ärzten.</p>
+    </div>
+    <div class="review-summary">
+      <div class="review-avg">4,7</div>
+      <div>
+        <div class="review-stars">★★★★★</div>
+        <div class="review-meta">Ø Bewertung aus 40 Beratungsprozessen</div>
+      </div>
+    </div>
+    <div class="review-grid">
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>Als Assistenzärztin hatte ich keine Ahnung, was unser Versorgungswerk eigentlich abdeckt. Ben hat mir das in einem Gespräch verständlich erklärt und direkt eine Lücke bei der Berufsunfähigkeit aufgedeckt. Heute fühle ich mich tatsächlich abgesichert, statt nur zu hoffen, dass nichts passiert.</p>
+        <div class="who">— Fachärztin, Innere Medizin</div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>Die Praxisgründung war für mich der größte finanzielle Schritt meines Lebens. Mit Unterstützung aus dem Netzwerk stand ein solider Finanzierungsplan, der auch von der Bank ohne Nachfragen akzeptiert wurde. Zwei Jahre später läuft die Praxis stabil und planbar.</p>
+        <div class="who">— Praxisinhaber, Allgemeinmedizin</div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★☆</div>
+        <p>Ich war skeptisch, weil ich schon zwei Verträge hatte, die sich im Nachhinein als unpassend herausstellten. Ben hat ehrlich aufgezeigt, was sinnvoll war und was nicht, ohne mir sofort etwas Neues zu verkaufen. Inzwischen ist mein BU-Schutz endlich auf meinen Beruf zugeschnitten.</p>
+        <div class="who">— Assistenzarzt, Chirurgie</div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>Der Vermögensaufbau neben Schichtdienst war für mich nie greifbar – zu viele Optionen, zu wenig Zeit. Mit einem klaren ETF-Plan, den wir gemeinsam aufgesetzt haben, läuft mein Sparplan jetzt seit über einem Jahr stabil und ich muss mich um nichts mehr kümmern.</p>
+        <div class="who">— Oberärztin, Anästhesie</div>
+      </div>
+    </div>
+    <div class="review-more">40 Bewertungen · Ø 4,7 von 5 Sternen aus abgeschlossenen Beratungsprozessen</div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">FAQ</span>
+      <h2>Häufige Fragen</h2>
+    </div>
+    <details class="faq-item" open>
+      <summary>Kostet das Erstgespräch etwas?</summary>
+      <p>Nein. Alle Gespräche sind kostenfrei – nicht nur das erste, sondern auch Folgegespräche im Rahmen der Beratung.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Wie lange dauert ein Gespräch?</summary>
+      <p>In der Regel 45–60 Minuten. Das gibt genug Raum, um deine Situation wirklich zu verstehen, statt nur oberflächlich durchzugehen.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Kennst du dich wirklich mit Versorgungswerken aus?</summary>
+      <p>Ja – die Beratung ist gezielt auf die Besonderheiten von Ärzten und Mitgliedern berufsständischer Versorgungswerke ausgerichtet.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Was passiert nach meiner Anfrage?</summary>
+      <p>Ich melde mich innerhalb von 24 Stunden – oder du buchst dir direkt online einen Termin, der zu deinem Dienstplan passt.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Verdienst du an Abschlüssen?</summary>
+      <p>Ehrlich: Ja. Ich erhalte Provisionen bei Vertragsabschlüssen – das erkläre ich dir transparent im Gespräch. Du entscheidest jederzeit selbst, ob und was du umsetzt.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Ich bin noch in der Assistenzarztzeit – lohnt sich das schon?</summary>
+      <p>Gerade dann. Wer früh anfängt, zahlt für BU und Vorsorge deutlich weniger als beim Einstieg als Facharzt.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Hilfst du auch bei der Jobsuche?</summary>
+      <p>In ausgewählten Fällen ja – im kleinen Rahmen unterstütze ich Assistenzärzte bei der Stellensuche über mein Netzwerk in Kliniken und Praxen. Sprich mich einfach im Gespräch darauf an.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Was, wenn ich schon einen Berater habe?</summary>
+      <p>Auch dann lohnt sich ein zweiter Blick. Viele bestehende Verträge sind nicht auf die Besonderheiten von Heilberufen zugeschnitten – das schauen wir uns gemeinsam an.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Brauche ich Unterlagen für das erste Gespräch?</summary>
+      <p>Nein. Für das erste Gespräch reicht ein grober Überblick über deine Situation. Konkrete Unterlagen wie Versorgungswerk-Bescheide oder Versicherungspolicen schauen wir uns bei Bedarf danach gemeinsam an.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Bietest du auch Hilfe bei Immobilien oder Finanzierung?</summary>
+      <p>Das Kerngeschäft bei mir sind Versorgung, Absicherung und Vermögensaufbau. Für Immobilienkauf, Baufinanzierung oder spezielle Investmentfragen ziehe ich bei Bedarf Partner aus meinem Experten-Netzwerk hinzu.</p>
+    </details>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <h2>Klarheit für deine finanzielle Zukunft</h2>
+    <p>Hinterlass deine Nummer, schreib mir direkt oder buche dir gleich einen Termin. Alle Gespräche sind kostenfrei und unverbindlich.</p>
+    <a class="btn" style="display:block;" href="tel:+4901551001102">📞 0155 10011026 anrufen</a>
+    <a class="booking-btn" href="https://outlook.office.com/book/Buchungsseite-KlarheitfrdeinefinanzielleZukunft@horbach.de/?ismsaljsauthenabled" target="_blank" rel="noopener">📅 Termin direkt buchen</a>
+    <p style="margin-top:14px; font-size:.85rem;"><a href="mailto:ben.wilke@horbach.de" style="color:var(--gold-light); border-bottom:1px solid var(--gold-light);">oder E-Mail an ben.wilke@horbach.de</a></p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-row">
+    <span>© 2026 Ben Wilke · Finanzkompass</span>
+    <span><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a> · <a href="tel:+4901551001102">📞 Direkt anrufen</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
